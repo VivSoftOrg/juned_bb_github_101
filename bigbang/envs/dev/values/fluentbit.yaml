@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentbit-values
+data:
+  values.yaml: |
+    fluentbit:
+      enabled: true
+      git:
+        repo: 'https://gitlab.com/enbuild-staging/charts/fluentbit.git'
+        path: ./chart
+        tag: 0.19.9-bb.0
+      flux: {}
+      values: {}
+      postRenderers: []
