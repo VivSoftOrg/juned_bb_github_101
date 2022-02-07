@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: promtail-values
+data:
+  values.yaml: |
+    enabled: false
+    git:
+      repo: 'https://gitlab.com/enbuild-staging/charts/promtail.git'
+      path: ./chart
+      tag: 3.8.1-bb.2
+    flux: {}
+    values: {}
+    postRenderers: []
