@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logging-values
+data:
+  values.yaml: |
+    logging:
+      enabled: true
+      git:
+        repo: 'https://gitlab.com/enbuild-staging/charts/elasticsearch-kibana.git'
+        path: ./chart
+        tag: 0.4.0-bb.0
+      flux:
+        timeout: 20m
+      ingress:
+        gateway: ''
+      sso:
+        enabled: false
+        client_id: ''
+        client_secret: ''
+      license:
+        trial: false
+        keyJSON: ''
+      values: {}
+      postRenderers: []
