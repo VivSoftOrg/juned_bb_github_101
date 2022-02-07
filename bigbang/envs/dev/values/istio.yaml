@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-values
+data:
+  values.yaml: |
+    istio:
+      enabled: true
+      git:
+        repo: >-
+          https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-controlplane.git
+        path: ./chart
+        tag: 1.11.3-bb.1
+      ingressGateways:
+        public-ingressgateway:
+          type: LoadBalancer
+          kubernetesResourceSpec: {}
+      gateways:
+        public:
+          ingressGateway: public-ingressgateway
+          hosts:
+            - '*.{{ .Values.domain }}'
+          autoHttpRedirect:
+            enabled: true
+          tls:
+            key: ''
+            cert: ''
+      flux: {}
+      values: {}
+      postRenderers: []
