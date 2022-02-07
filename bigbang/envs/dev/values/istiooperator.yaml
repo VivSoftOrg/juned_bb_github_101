@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istiooperator-values
+data:
+  values.yaml: |
+    istiooperator:
+      enabled: true
+      git:
+        repo: 'https://gitlab.com/enbuild-staging/charts/istio-operator.git'
+        path: ./chart
+        tag: 1.11.3-bb.2
+      flux: {}
+      values: {}
+      postRenderers: []
