@@ -1,0 +1,19 @@
+# -- Toggle deployment of OPA Gatekeeper.
+enabled: true
+git:
+  repo: https://gitlab.com/enbuild-staging/charts/gatekeeper.git
+  path: "./chart"
+  tag: "3.6.0-bb.2"
+
+# -- Flux reconciliation overrides specifically for the OPA Gatekeeper Package
+flux:
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+
+# -- Values to passthrough to the gatekeeper chart: https://gitlab.com/enbuild-staging/charts/gatekeeper.git
+values: {}
+
+# -- Post Renderers.  See docs/postrenders.md
+postRenderers: []

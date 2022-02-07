@@ -1,0 +1,29 @@
+# -- Toggle deployment of Kiali.
+enabled: true
+git:
+  repo: https://gitlab.com/enbuild-staging/charts/kiali.git
+  path: "./chart"
+  tag: "1.44.0-bb.1"
+
+# -- Flux reconciliation overrides specifically for the Kiali Package
+flux: {}
+
+# Redirect the package ingress to a specific Istio Gateway (listed in `istio.gateways`).  The default is "public".
+ingress:
+  gateway: ""
+
+sso:
+  # -- Toggle SSO for Kiali on and off
+  enabled: false
+
+  # -- OIDC Client ID to use for Kiali
+  client_id: ""
+
+  # -- OIDC Client Secret to use for Kiali
+  client_secret: ""
+
+# -- Values to pass through to Kiali chart: https://repo1.dso.mil/platform-one/big-bang/apps/core/kiali
+values: {}
+
+# -- Post Renderers.  See docs/postrenders.md
+postRenderers: []
