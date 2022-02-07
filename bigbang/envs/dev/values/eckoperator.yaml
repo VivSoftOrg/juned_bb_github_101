@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eckoperator-values
+data:
+  values.yaml: |
+    eckoperator:
+      enabled: true
+      git:
+        repo: 'https://gitlab.com/enbuild-staging/charts/eck-operator.git'
+        path: ./chart
+        tag: 1.7.1-bb.0
+      flux: {}
+      values: {}
