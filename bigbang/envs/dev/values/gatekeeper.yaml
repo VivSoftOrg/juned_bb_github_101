@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatekeeper-values
+data:
+  values.yaml: |
+    gatekeeper:
+      enabled: true
+      git:
+        repo: 'https://gitlab.com/enbuild-staging/charts/gatekeeper.git'
+        path: ./chart
+        tag: 3.6.0-bb.2
+      flux:
+        install:
+          crds: CreateReplace
+        upgrade:
+          crds: CreateReplace
+      values: {}
+      postRenderers: []
