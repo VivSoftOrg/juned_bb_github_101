@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: repo-values
+data:
+  values.yaml: |
+    domain: 18.215.199.234.nip.io
+    offline: false
+    registryCredentials:
+      registry: registry1.dso.mil
+      username: ''
+      password: ''
+      email: ''
+    openshift: false
+    git:
+      existingSecret: ''
+      credentials:
+        username: ''
+        password: ''
+        caFile: ''
+        privateKey: ''
+        publicKey: ''
+        knownHosts: ''
+    sso:
+      oidc:
+        host: login.dso.mil
+        realm: baby-yoda
+      certificate_authority: ''
+      jwks: ''
+      client_id: ''
+      client_secret: ''
+      token_url: >-
+        https://{{ .Values.sso.oidc.host }}/auth/realms/{{ .Values.sso.oidc.realm
+        }}/protocol/openid-connect/token
+      auth_url: >-
+        https://{{ .Values.sso.oidc.host }}/auth/realms/{{ .Values.sso.oidc.realm
+        }}/protocol/openid-connect/auth
+      secretName: tls-ca-sso
+    flux:
+      timeout: 10m
+      interval: 2m
+      test:
+        enable: false
+      install:
+        remediation:
+          retries: -1
+      upgrade:
+        remediation:
+          retries: 3
+          remediateLastFailure: true
+        cleanupOnFail: true
+      rollback:
+        timeout: 10m
+        cleanupOnFail: true
+    networkPolicies:
+      enabled: true
+      controlPlaneCidr: 0.0.0.0/0
+      nodeCidr: ''
+    imagePullPolicy: IfNotPresent
